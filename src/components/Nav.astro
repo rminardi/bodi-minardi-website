@@ -1,0 +1,25 @@
+---
+// src/components/Nav.astro
+const links = [
+  { href: '/', label: 'Bio' },
+  { href: '/cv', label: 'CV' },
+  { href: '/compositions', label: 'Compositions' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/engraving', label: 'Engraving' },
+];
+const path = Astro.url.pathname;
+---
+<div class="rail">
+  <p class="rail-name">Bodi Minardi</p>
+  <nav>
+    <ul>
+      {links.map(link => (
+        <li>
+          <a href={link.href} aria-current={path === link.href ? 'page' : undefined}>
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</div>

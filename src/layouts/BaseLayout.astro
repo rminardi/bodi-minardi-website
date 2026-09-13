@@ -1,0 +1,22 @@
+---
+// src/layouts/BaseLayout.astro
+import Nav from '../components/Nav.astro';
+import '../styles/global.css';
+interface Props { title: string; }
+const { title } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="shell">
+      <Nav />
+      <main><slot /></main>
+    </div>
+  </body>
+</html>

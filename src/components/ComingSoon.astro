@@ -1,0 +1,35 @@
+---
+// src/components/ComingSoon.astro
+interface Props {
+  label?: string; // e.g. "Compositions", "Blog"
+}
+const { label = 'This section' } = Astro.props;
+---
+<div class="panel coming-soon">
+  <p class="eyebrow">In progress</p>
+  <h2>{label} — coming soon</h2>
+  <p>I'm still working on this section. Check back shortly!</p>
+</div>
+
+<style>
+  .coming-soon {
+    text-align: center;
+    padding: 3.5rem 2rem;
+  }
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.75rem;
+  }
+  .coming-soon h2 {
+    margin-bottom: 0.5rem;
+  }
+  .coming-soon p:last-child {
+    color: var(--text-on-bg);
+    opacity: 0.7;
+    margin: 0;
+  }
+</style>

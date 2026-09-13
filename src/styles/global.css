@@ -1,0 +1,127 @@
+/* src/styles/global.css */
+:root {
+  --bg: #0B1F33;
+  --surface: #12293F;
+  --accent: #4FA3D1;
+  --accent-deep: #1F5C8B;
+  --text-on-bg: #EAF1FA;
+  --muted: #7C93AC;
+  --rule: rgba(234, 241, 250, 0.12);
+
+  /* new: glass panel tokens, replacing the old solid --panel / --text-on-panel */
+  --glass-bg: rgba(234, 241, 250, 0.07);
+  --glass-border: rgba(234, 241, 250, 0.18);
+  --glass-shadow: rgba(6, 16, 28, 0.4);
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #0B1F33 0%, #16344F 45%, #1F5C8B 100%);
+  background-attachment: fixed;
+  color: var(--text-on-bg);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Layout shell */
+.shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+}
+
+.rail {
+  background: transparent;
+  border-right: 1px solid var(--rule);
+  padding: 2.5rem 1.5rem;
+}
+
+
+.rail-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+}
+
+.rail nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.rail nav a {
+  color: var(--muted);
+  font-size: 0.95rem;
+  border-left: 2px solid transparent;
+  padding-left: 0.75rem;
+}
+
+.rail nav a[aria-current="page"] {
+  color: var(--text-on-bg);
+  border-left-color: var(--accent);
+}
+
+main {
+  padding: 3rem 4rem;
+  max-width: 760px;
+}
+
+.panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-on-bg);
+  border-radius: 6px;
+  box-shadow: 0 8px 32px var(--glass-shadow);
+  padding: 2rem;
+}
+
+.panel a { color: var(--accent); }
+.panel a:hover { color: var(--text-on-bg); }
+
+@media (max-width: 800px) {
+  .shell {
+    grid-template-columns: 1fr;
+    align-content: start; /* ← add this line */
+  }
+  .rail {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.25rem;
+  }
+  .rail nav ul {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 1.25rem;
+  }
+  main {
+    padding: 2rem 1.25rem;
+  }
+}

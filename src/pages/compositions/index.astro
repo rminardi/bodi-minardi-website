@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+const works = (await getCollection('compositions')).sort(
+  (a: CollectionEntry<'compositions'>, b: CollectionEntry<'compositions'>) =>
+    b.data.year - a.data.year
+);
+---
+<BaseLayout title="Compositions">
+    <div class="panel">
+  <ul>
+    {works.map((w: CollectionEntry<'compositions'>) => (
+      <li><a href={`/compositions/${w.id}`}>{w.data.title} ({w.data.year})</a></li>
+    ))}
+  </ul>
+
+    </div>
+</BaseLayout>
