@@ -1,7 +1,233 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ComingSoon from '../components/ComingSoon.astro';
 ---
-<BaseLayout title="CV">
-  <ComingSoon label="CV" />
+<BaseLayout title="CV | Bodi Minardi">
+  <article class="cv">
+    <header class="cv-header">
+      <p class="eyebrow">Composer · Curriculum Vitae</p>
+      <h1>Bodi Minardi</h1>
+      <p class="focus">Works for piano, small ensemble, and orchestra</p>
+      <p class="profile-placeholder">
+        Profile placeholder: add a short third-person introduction about musical
+        interests, current studies, and approach to composing.
+      </p>
+    </header>
+
+    <section class="cv-section" aria-labelledby="compositions-title">
+      <div class="section-label">
+        <span class="section-number">01</span>
+        <h2 id="compositions-title">Compositions</h2>
+      </div>
+      <div class="section-content works">
+        <section class="work-group" aria-labelledby="piano-title">
+          <h3 id="piano-title">Piano</h3>
+          <div class="entry">
+            <span class="year">Year</span>
+            <div>
+              <p class="entry-title">Piano work title</p>
+              <p class="entry-detail">Solo piano · Duration</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="work-group" aria-labelledby="ensemble-title">
+          <h3 id="ensemble-title">Small ensemble</h3>
+          <div class="entry">
+            <span class="year">Year</span>
+            <div>
+              <p class="entry-title">Ensemble work title</p>
+              <p class="entry-detail">Instrumentation · Duration</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="work-group" aria-labelledby="orchestral-title">
+          <h3 id="orchestral-title">Orchestral</h3>
+          <div class="entry">
+            <span class="year">Year</span>
+            <div>
+              <p class="entry-title">Orchestral work title</p>
+              <p class="entry-detail">Instrumentation · Duration</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="cv-section" aria-labelledby="recognition-title">
+      <div class="section-label">
+        <span class="section-number">02</span>
+        <h2 id="recognition-title">Awards &amp; festivals</h2>
+      </div>
+      <div class="section-content">
+        <div class="entry">
+          <span class="year">Year</span>
+          <div>
+            <p class="entry-title">Award or festival name</p>
+            <p class="entry-detail">Award, selection, or participation</p>
+          </div>
+        </div>
+        <p class="section-note">Add distinctions, selections, or festival appearances here.</p>
+      </div>
+    </section>
+
+    <section class="cv-section" aria-labelledby="study-title">
+      <div class="section-label">
+        <span class="section-number">03</span>
+        <h2 id="study-title">Study</h2>
+      </div>
+      <div class="section-content">
+        <div class="entry">
+          <span class="year">Years</span>
+          <div>
+            <p class="entry-title">School, teacher, or program</p>
+            <p class="entry-detail">Instrument, composition, or music studies</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section interests" aria-labelledby="interests-title">
+      <div class="section-label">
+        <span class="section-number">04</span>
+        <h2 id="interests-title">Beyond music</h2>
+      </div>
+      <div class="section-content">
+        <p class="profile-placeholder">Add a few interests or hobbies outside music.</p>
+      </div>
+    </section>
+  </article>
 </BaseLayout>
+
+<style>
+  .cv {
+    max-width: 54rem;
+    padding-bottom: 3rem;
+  }
+
+  .cv-header {
+    padding: 0.25rem 0 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .eyebrow,
+  .section-number {
+    color: var(--accent);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+  }
+
+  .eyebrow {
+    margin: 0 0 0.7rem;
+  }
+
+  .cv-header h1 {
+    margin-bottom: 0.35rem;
+    font-size: 3rem;
+  }
+
+  .focus {
+    margin: 0;
+    color: var(--text-on-bg);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+  }
+
+  .profile-placeholder {
+    max-width: 40rem;
+    margin: 1rem 0 0;
+    color: var(--muted);
+  }
+
+  .cv-section {
+    display: grid;
+    grid-template-columns: minmax(9.5rem, 0.7fr) minmax(0, 1.7fr);
+    gap: 2rem;
+    padding: 1.65rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-label h2 {
+    margin: 0.35rem 0 0;
+    font-size: 1.45rem;
+  }
+
+  .section-content {
+    min-width: 0;
+    padding-top: 0.2rem;
+  }
+
+  .work-group + .work-group {
+    margin-top: 1.3rem;
+  }
+
+  .work-group h3 {
+    margin-bottom: 0.65rem;
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: start;
+  }
+
+  .year {
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+
+  .entry-title,
+  .entry-detail,
+  .section-note {
+    margin: 0;
+  }
+
+  .entry-title {
+    color: var(--text-on-bg);
+  }
+
+  .entry-detail,
+  .section-note {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .section-note {
+    margin: 0.75rem 0 0 4.25rem;
+  }
+
+  .interests {
+    border-bottom: 0;
+  }
+
+  .interests .profile-placeholder {
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .cv-header h1 {
+      font-size: 2.5rem;
+    }
+
+    .cv-section {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+      padding: 1.4rem 0;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+    }
+
+    .section-label h2 {
+      margin: 0;
+    }
+  }
+</style>

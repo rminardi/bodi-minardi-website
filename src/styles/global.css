@@ -8,7 +8,6 @@
   --muted: #7C93AC;
   --rule: rgba(234, 241, 250, 0.12);
 
-  /* new: glass panel tokens, replacing the old solid --panel / --text-on-panel */
   --glass-bg: rgba(234, 241, 250, 0.07);
   --glass-border: rgba(234, 241, 250, 0.18);
   --glass-shadow: rgba(6, 16, 28, 0.4);
@@ -22,12 +21,25 @@
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   margin: 0;
-  background: linear-gradient(135deg, #0B1F33 0%, #16344F 45%, #1F5C8B 100%);
-  background-attachment: fixed;
+  background: #0B1F33;
   color: var(--text-on-bg);
   font-family: var(--font-body);
   line-height: 1.6;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(135deg, #0B1F33 0%, #16344F 45%, #1F5C8B 100%);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  animation: gradient-drift 24s ease-in-out infinite alternate;
 }
 
 h1,
@@ -43,6 +55,7 @@ a {
   color: var(--accent);
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }
@@ -59,7 +72,6 @@ a:hover {
   border-right: 1px solid var(--rule);
   padding: 2.5rem 1.5rem;
 }
-
 
 .rail-name {
   font-family: var(--font-display);
@@ -109,19 +121,35 @@ main {
 
 @media (max-width: 800px) {
   .shell {
-    grid-template-columns: 1fr;
-    align-content: start; /* ← add this line */
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
   }
+
   .rail {
     border-bottom: 1px solid var(--rule);
     padding: 1.25rem;
   }
+
   .rail nav ul {
     flex-direction: row;
-    overflow-x: auto;
-    gap: 1.25rem;
+    flex-wrap: wrap;
+    overflow: visible;
+    gap: 0.55rem 1.25rem;
   }
+
   main {
     padding: 2rem 1.25rem;
+  }
+}
+
+@keyframes gradient-drift {
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
   }
 }

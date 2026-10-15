@@ -2,6 +2,89 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Bio">
-  <h1>Bodi Minardi</h1>
-  <p>...</p>
+  <section class="bio" aria-labelledby="bio-title">
+    <figure class="portrait">
+      <div class="portrait-placeholder" role="img" aria-label="Photo placeholder"></div>
+    </figure>
+
+    <div class="bio-copy">
+      <p class="eyebrow">Biography</p>
+      <h1 id="bio-title">Bodi Minardi</h1>
+      <p class="lead">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod
+        bibendum laoreet; proin gravida dolor sit amet lacus accumsan et viverra
+        justo commodo.
+      </p>
+      <p>
+        Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis
+        dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis.
+      </p>
+      <p>
+        Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus
+        auctor fringilla. Replace this text with a short introduction when your
+        bio is ready.
+      </p>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .bio {
+    display: grid;
+    grid-template-columns: minmax(150px, 0.8fr) minmax(0, 1.2fr);
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    min-height: calc(100vh - 6rem);
+  }
+
+  .portrait {
+    margin: 0;
+  }
+
+  .portrait-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #858b90;
+    border-radius: 2px;
+  }
+
+  .eyebrow {
+    margin: 0 0 0.7rem;
+    color: var(--accent);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .bio-copy h1 {
+    margin-bottom: 1.1rem;
+    font-size: 2.6rem;
+  }
+
+  .bio-copy p {
+    max-width: 38rem;
+    color: var(--text-on-bg);
+    opacity: 0.82;
+  }
+
+  .bio-copy .lead {
+    color: var(--text-on-bg);
+    font-size: 1.08rem;
+    opacity: 1;
+  }
+
+  @media (max-width: 800px) {
+    .bio {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 2rem;
+      min-height: auto;
+    }
+
+    .portrait {
+      width: min(100%, 22rem);
+    }
+
+    .bio-copy h1 {
+      font-size: 2.3rem;
+    }
+  }
+</style>
